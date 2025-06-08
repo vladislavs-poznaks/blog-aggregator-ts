@@ -1,20 +1,14 @@
 import process from 'process'
 
-import { setUser } from "./config"
-import { CommandRegistry, CommandHandler, register, run } from "./commands"
+import { CommandRegistry, registerCommand, runCommand } from "./commands"
+import { login } from "./handlers/login"
+import { register } from "./handlers/register"
 
-function main() {
+async function main() {
     const registry: CommandRegistry = {}
 
-    register(registry, 'login', (command, ...args) => {
-        if (args.length === 0) {
-            throw new Error('Username is required')
-        }
-
-        setUser(args[0])
-
-        console.log(`Logged in as ${args[0]}`)
-    })
+    registerCommand(registry, 'login', login)
+    registerCommand(registry, 'register', register)
 
     const args = process.argv.slice(2)
 
@@ -24,11 +18,13 @@ function main() {
     }
 
     try {
-        run(registry, args[0], ...args.slice(1))
+        await runCommand(registry, args[0], ...args.slice(1))
     } catch (error) {
         console.log(error)
         process.exit(1)
     }
+
+    process.exit(0)
 }
 
 main()

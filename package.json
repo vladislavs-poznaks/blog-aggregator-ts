@@ -1,0 +1,26 @@
+{
+  "name": "blog-aggregator-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsx ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladislavs-poznaks/blog-aggregator-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vladislavs-poznaks/blog-aggregator-ts/issues"
+  },
+  "homepage": "https://github.com/vladislavs-poznaks/blog-aggregator-ts#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

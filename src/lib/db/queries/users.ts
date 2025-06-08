@@ -13,3 +13,7 @@ export const getByName = async (name: string) => {
 
   return result
 }
+
+export const truncate = async () => {
+  await db.delete(users)
+}

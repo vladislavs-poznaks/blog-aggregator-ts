@@ -3,12 +3,14 @@ import process from 'process'
 import { CommandRegistry, registerCommand, runCommand } from "./commands"
 import { login } from "./handlers/login"
 import { register } from "./handlers/register"
+import { reset } from "./handlers/reset"
 
 async function main() {
     const registry: CommandRegistry = {}
 
     registerCommand(registry, 'login', login)
     registerCommand(registry, 'register', register)
+    registerCommand(registry, 'reset', reset)
 
     const args = process.argv.slice(2)
 

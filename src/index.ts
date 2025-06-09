@@ -6,6 +6,7 @@ import { register } from "./handlers/register"
 import { reset } from "./handlers/reset"
 import { agg } from "./handlers/agg"
 import { addfeed } from './handlers/addfeed'
+import { getFeeds } from './handlers/feeds'
 
 
 async function main() {
@@ -16,6 +17,7 @@ async function main() {
     registerCommand(registry, 'reset', reset)
     registerCommand(registry, 'agg', agg)
     registerCommand(registry, 'addfeed', addfeed)
+    registerCommand(registry, 'feeds', getFeeds)
 
 
     const args = process.argv.slice(2)

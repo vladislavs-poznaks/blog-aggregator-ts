@@ -1,9 +1,5 @@
 import { CommandHandler } from "../commands"
 import { getFeedsWithUsers } from "../lib/db/queries/feeds";
-import {feeds} from "../lib/db/schema"
-
-export type Feed = typeof feeds.$inferSelect;
-
 
 export const getFeeds: CommandHandler = async (command: string, ...args: string[]) => {
     const feedsWithUsers = await getFeedsWithUsers()

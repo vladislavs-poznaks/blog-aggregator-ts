@@ -1,5 +1,4 @@
-import { CommandHandler, UserCommandHandler } from "../commands"
-import { readConfig } from "../config"
+import { UserCommandHandler } from "../commands"
 import { getFeedFolowsForUser } from "../lib/db/queries/feed_follows"
 import { User } from "../lib/db/schema"
 

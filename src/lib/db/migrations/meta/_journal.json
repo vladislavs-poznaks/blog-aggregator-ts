@@ -15,6 +15,13 @@
       "when": 1749487994498,
       "tag": "0001_messy_starfox",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1749491174612,
+      "tag": "0002_fine_sandman",
+      "breakpoints": true
     }
   ]
 }

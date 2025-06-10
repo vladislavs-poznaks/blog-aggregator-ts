@@ -8,6 +8,12 @@ export const create = async (name: string, url: string, userId: string) => {
     return result
 }
 
+export const getByUrl = async (url: string) => {
+    const [result] = await db.select().from(feeds).where(eq(feeds.url, url))
+  
+    return result
+  }
+
 export const getFeedsWithUsers = async () => {
     const result = await db.select().from(feeds).leftJoin(users, eq(users.id, feeds.userId))
 

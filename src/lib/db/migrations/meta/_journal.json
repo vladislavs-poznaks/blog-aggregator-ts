@@ -22,6 +22,13 @@
       "when": 1749491174612,
       "tag": "0002_fine_sandman",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1749533952051,
+      "tag": "0003_brave_warbound",
+      "breakpoints": true
     }
   ]
 }

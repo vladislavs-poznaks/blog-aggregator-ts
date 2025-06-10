@@ -9,6 +9,7 @@ import { addfeed } from './handlers/addfeed'
 import { getFeeds } from './handlers/feeds'
 import { follow } from './handlers/follow'
 import { following } from './handlers/following'
+import { userLoggedIn } from './middleware/user_logged_in'
 
 
 async function main() {
@@ -18,10 +19,10 @@ async function main() {
     registerCommand(registry, 'register', register)
     registerCommand(registry, 'reset', reset)
     registerCommand(registry, 'agg', agg)
-    registerCommand(registry, 'addfeed', addfeed)
+    registerCommand(registry, 'addfeed', userLoggedIn(addfeed))
     registerCommand(registry, 'feeds', getFeeds)
-    registerCommand(registry, 'follow', follow)
-    registerCommand(registry, 'following', following)
+    registerCommand(registry, 'follow', userLoggedIn(follow))
+    registerCommand(registry, 'following', userLoggedIn(following))
 
     const args = process.argv.slice(2)
 

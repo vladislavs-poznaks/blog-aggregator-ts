@@ -1,4 +1,8 @@
+import { User } from "./lib/db/schema"
+
 export type CommandHandler = (command: string, ...args: string[]) => Promise<void>
+
+export type UserCommandHandler = (command: string, user: User, ...args: string[]) => Promise<void>
 
 export type CommandRegistry = Record<string, CommandHandler>
 

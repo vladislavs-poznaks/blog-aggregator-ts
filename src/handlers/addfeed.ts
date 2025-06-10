@@ -1,20 +1,13 @@
-import { CommandHandler } from "../commands"
-import { readConfig } from "../config"
+import { UserCommandHandler } from "../commands"
 import { create as createFeedFollow } from "../lib/db/queries/feed_follows"
 import { create as createFeed } from "../lib/db/queries/feeds"
-import { getByName } from "../lib/db/queries/users"
-import { feeds, users } from "../lib/db/schema"
-
-export type Feed = typeof feeds.$inferSelect;
-export type User = typeof users.$inferSelect;
+import { Feed, User } from "../lib/db/schema"
 
 
-export const addfeed: CommandHandler = async (command: string, ...args: string[]) => {
+export const addfeed: UserCommandHandler = async (command: string, user: User, ...args: string[]) => {
     if (args.length < 2) {
         throw new Error('Usage: cmd <name> <url>')
     }
-
-    const user = await getByName(readConfig().currentUserName)
 
     const feed = await createFeed(args[0], args[1], user.id)
 

@@ -1,10 +1,11 @@
-import { CommandHandler } from "../commands"
+import { CommandHandler, UserCommandHandler } from "../commands"
 import { readConfig } from "../config"
 import { getFeedFolowsForUser } from "../lib/db/queries/feed_follows"
+import { User } from "../lib/db/schema"
 
 
-export const following: CommandHandler = async (command: string, ...args: string[]) => {
-    const feeds = await getFeedFolowsForUser(readConfig().currentUserName)
+export const following: UserCommandHandler = async (command: string, user: User, ...args: string[]) => {
+    const feeds = await getFeedFolowsForUser(user)
 
     for (const feed of feeds) {
         console.log('--- Following feeds ---')

@@ -11,6 +11,7 @@ import { follow } from './handlers/follow'
 import { following } from './handlers/following'
 import { userLoggedIn } from './middleware/user_logged_in'
 import { unfollow } from './handlers/unfollow'
+import { browse } from './handlers/browse'
 
 
 async function main() {
@@ -25,6 +26,7 @@ async function main() {
     registerCommand(registry, 'follow', userLoggedIn(follow))
     registerCommand(registry, 'unfollow', userLoggedIn(unfollow))
     registerCommand(registry, 'following', userLoggedIn(following))
+    registerCommand(registry, 'browse', userLoggedIn(browse))
 
     const args = process.argv.slice(2)
 

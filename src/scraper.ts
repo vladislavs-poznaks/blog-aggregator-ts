@@ -1,5 +1,6 @@
 import { fetchFeed } from "./feed"
 import { getNextFeedToFetch, markFeedFetched } from "./lib/db/queries/feeds"
+import { create } from "./lib/db/queries/posts"
 
 
 export const scrape = async () => {
@@ -12,7 +13,14 @@ export const scrape = async () => {
     console.log(`### Fetched feed: ${feed.channel.title} ###`)
 
     for (const item of feed.channel.item) {
-        console.log(`- ${item.title}`)
+
+        try {
+            const post = await create(item.title, item.link, item.description, item.pubDate, nextFeed.id)
+
+            console.log(`- ${post.title}`)
+        } catch (err) {
+            //
+        }
     }
 
 }

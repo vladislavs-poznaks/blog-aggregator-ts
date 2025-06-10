@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm"
+import { and, eq } from "drizzle-orm"
 import { db } from ".."
 import { feedFollows, feeds, User, users } from "../schema"
 
@@ -20,4 +20,17 @@ export const getFeedFolowsForUser = async (user: User) => {
         .leftJoin(users, eq(users.id, feedFollows.userId))
 
     return result
+}
+
+export const deleteFeedFollow = async (user: User, url: string) => {
+    const [result] = await db.select().from(feedFollows)
+        .where(
+            and(
+                eq(feedFollows.userId, user.id),
+                eq(feeds.url, url)
+            )
+        )
+        .innerJoin(feeds, eq(feeds.id, feedFollows.feedId))
+
+    await db.delete(feedFollows).where(eq(feedFollows.id, result.feed_follows.id))
 }

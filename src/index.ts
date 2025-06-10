@@ -10,6 +10,7 @@ import { getFeeds } from './handlers/feeds'
 import { follow } from './handlers/follow'
 import { following } from './handlers/following'
 import { userLoggedIn } from './middleware/user_logged_in'
+import { unfollow } from './handlers/unfollow'
 
 
 async function main() {
@@ -22,6 +23,7 @@ async function main() {
     registerCommand(registry, 'addfeed', userLoggedIn(addfeed))
     registerCommand(registry, 'feeds', getFeeds)
     registerCommand(registry, 'follow', userLoggedIn(follow))
+    registerCommand(registry, 'unfollow', userLoggedIn(unfollow))
     registerCommand(registry, 'following', userLoggedIn(following))
 
     const args = process.argv.slice(2)
